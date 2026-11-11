@@ -1,8 +1,8 @@
 // app.js
 // Importa o framework Express para criar a API.
 import express from 'express';
-// Importa a lista de produtos e o contador do próximo ID disponível.
-import { produtos, proximoId } from './produtos.js';
+// Importa a lista de produtos.
+import { produtos } from './produtos.js';
 
 // Cria a aplicação Express.
 const app = express();
@@ -69,8 +69,8 @@ app.post('/produtos', (req, res) => {
 
     // Criação do novo objeto com a sintaxe reduzida do ES6 (Property Shorthand).
     const novoProduto = {
-        // Usa o valor atual de proximoId e depois incrementa para garantir IDs únicos.
-        id: proximoId++,
+        // Usa o tamanho atual do array mais 1 como ID do novo produto.
+        id: produtos.length + 1,
         // Copia os valores recebidos para o objeto do produto.
         nome,
         // Converte o preço para número decimal.
